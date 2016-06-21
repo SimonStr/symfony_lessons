@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class BlogController extends Controller
 {
     /**
-     * @Route("/blog")
+     * @Route("/blog", name="show-blog")
      */
     public function showBlogAction()
     {
