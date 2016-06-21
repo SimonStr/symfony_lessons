@@ -2,5 +2,10 @@
 
 {% block content %}
         <h1>Blog page</h1>
+        {% for post in posts %}
+                <h2>{{ post.heading }}</h2>
+                <div>{{ post.content }}</div>
+                <a class="btn btn-primary" href="{{ path('show-blog-post', {slug:post.slug}) }}">Read more</a>
+        {% endfor %}
 {% endblock %}
 
