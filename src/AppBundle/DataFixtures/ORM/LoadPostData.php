@@ -4,6 +4,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 
+use AppBundle\Entity\Post;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -22,7 +23,7 @@ Sed id imperdiet ex. Donec id mi enim. Quisque ullamcorper mi sit amet augue tem
 Phasellus auctor augue a erat aliquam ultricies a sed lectus. Sed vitae sem vitae velit hendrerit imperdiet.
 HEREDOC
             );
-            $manager->persist();
+            $manager->persist($post);
         }
         $manager->flush();
     }
