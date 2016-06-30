@@ -14,7 +14,7 @@ class LoadPostData implements FixtureInterface
     {
         for ($i=0; $i<10; $i++) {
             $post = new Post();
-            $post->setSlug(sprintf('post_%d',$i));
+//            $post->setSlug(sprintf('post_%d',$i));
             $post->setHeading(sprintf('Post_%d',$i));
             $post->setContent(<<<HEREDOC
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam neque, pulvinar eget enim viverra, tempor blandit leo. 
