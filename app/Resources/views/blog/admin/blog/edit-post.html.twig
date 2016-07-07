@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Edit post {{ post.heading }}</h1>
+    {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <button class="button button-success">save</button>
+    {{ form_end(form) }}
+
+{% endblock %}
