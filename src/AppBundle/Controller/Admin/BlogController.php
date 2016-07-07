@@ -31,7 +31,7 @@ class BlogController extends Controller
     public function editBlogPostAction($id)
     {
         $post = $this->getPostRepository()->find($id);
-        $form = $this->$this->createEditBlogPostForm($post);
+        $form = $this->createEditBlogPostForm($post);
         
         return $this->render('blog/admin/blog/edit-post.html.twig', [
             'post' => $post,
