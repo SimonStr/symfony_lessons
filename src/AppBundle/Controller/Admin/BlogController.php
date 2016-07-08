@@ -59,7 +59,61 @@ class BlogController extends Controller
             'form' => $form->createView(),
         ]);
     }
-    
+
+    /**
+     * @Route("/blog/post/new", name="admin_blog_post_new")
+     */
+    public function newBlogPostAction()
+    {
+        $post = new Post();
+        $form = $this->createForm(BlogPostType::class, $post, [
+            'action' =>$this->generateUrl('admin_blog_post_create'),
+        ]);
+
+        return $this->render('blog/admin/blog/new-post.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/blog/post/create", name="admin_blog_post_create")
+     */
+    public function createBlogPostAction(Request $request)
+    {
+        $post = new Post();
+        $form = $this->createForm(BlogPostType::class, $post, [
+            'action' =>$this->generateUrl('admin_blog_post_create'),
+        ]);
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+
+            $doctrineManager = $this->getDoctrine()->getManager();
+
+            $doctrineManager->persist($post);
+            $doctrineManager->flush();
+
+            return $this->redirectToRoute('admin_blog');
+        }
+        return $this->render('blog/admin/blog/create-post.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/blog/post/{id}/delete", name="admin_blog_post_delete")
+     */
+    public function deleteBlogPostAction($id)
+    {
+        $post = $this->getPostRepository()->find($id);
+        $doctrineManager = $this->getDoctrine()->getManager();
+        $doctrineManager->remove($post);
+        $doctrineManager->flush();
+
+        return $this->redirectToRoute('admin_blog');
+    }
+
     private function getPostRepository()
     {
         return $this->getDoctrine()->getRepository(Post::class);
