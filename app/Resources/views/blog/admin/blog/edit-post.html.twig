@@ -4,6 +4,7 @@
     <h1>Edit post {{ post.heading }}</h1>
     {{ form_start(form) }}
         {{ form_rest(form) }}
+
         <button class="btn btn-success">save</button>
         <a href="{{ path('admin_blog_post_delete',{id: post.id})  }}" class="btn btn-danger">delete</a>
     {{ form_end(form) }}

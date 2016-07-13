@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Post;
 use AppBundle\Form\BlogPostType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,6 +42,7 @@ class BlogController extends Controller
 
     /**
      * @Route("/blog/post/{id}/update", name="admin_blog_post_update")
+     * @Method("POST")
      */
     public function updateBlogPostAction(Request $request, $id)
     {
@@ -88,7 +90,6 @@ class BlogController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
 
-
             $doctrineManager = $this->getDoctrine()->getManager();
 
             $doctrineManager->persist($post);
@@ -96,13 +97,14 @@ class BlogController extends Controller
 
             return $this->redirectToRoute('admin_blog');
         }
-        return $this->render('blog/admin/blog/create-post.html.twig', [
+        return $this->render('blog/admin/blog/new-post.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/blog/post/{id}/delete", name="admin_blog_post_delete")
+     * @Method("POST")
      */
     public function deleteBlogPostAction($id)
     {

@@ -22,7 +22,7 @@ class BlogPostType extends AbstractType
     {
        $resolver
            ->setDefaults([
-                'data_class' => Post::class,        
+                'data_class' => Post::class,
            ])
        ;
     }
