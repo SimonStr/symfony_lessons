@@ -1,1 +1,1 @@
-short.post.content.message: Your message so small min message must have {{ limit }} symbols
+count_posts: '%count% post|%count% posts'

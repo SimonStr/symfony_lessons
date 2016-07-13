@@ -2,7 +2,13 @@
 
 {% block content %}
     <a href="{{ path('admin_blog_post_new') }}" class="button btn btn-primary">Create post</a>
+    <div class="pull-right">
+        {#{{ posts|length }} posts#}
+        {{ "count_posts"|transchoice( posts|length ) }}
+    </div>
     <h1>Blog posts list</h1>
+
+
     <table class="table table-stripped">
         <tr>
             <th>ID</th>
