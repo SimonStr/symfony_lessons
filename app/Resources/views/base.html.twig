@@ -24,13 +24,22 @@
                                 <a href="{{ path('show-blog') }}">Blog</a>
                             </li>
                         </ul>
-                        {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
                             <ul class="nav navbar-nav pull-right">
-                                <li>
-                                    <a href="{{ path('admin_blog') }}">Admin</a>
-                                </li>
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li>
+                                        <a href="{{ path('security_logout') }}">Logout</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ path('security_login') }}">Login</a>
+                                    </li>
+                                {% endif %}
+                                {% if is_granted('ROLE_USER') %}
+                                    <li>
+                                        <a href="{{ path('admin_blog') }}">Admin</a>
+                                    </li>
+                                {% endif %}
                             </ul>
-                        {% endif %}
                     </nav>
                 </div>
             </div>

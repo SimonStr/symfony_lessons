@@ -38,10 +38,6 @@ class User implements UserInterface
         return ['ROLE_USER'];
     }
 
-    public function getRoles()
-    {
-        // TODO: Implement getRoles() method.
-    }
 
     public function getPassword()
     {
@@ -51,6 +47,14 @@ class User implements UserInterface
     public function getSalt()
     {
         // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
     }
 
     public function getUsername()
